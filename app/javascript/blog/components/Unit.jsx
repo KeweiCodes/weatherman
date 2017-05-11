@@ -33,7 +33,7 @@ class Unit extends React.Component{
     return(
       <div className="col-sm-2">
         <img src={weather_icon}/>
-        <div>{moment.parseZone(dt_txt).format('MMM D H:mm')}</div>
+        <div>{moment.parseZone(dt_txt).format('MMM D HA')}</div>
         <div>{main.temp_min}°C ~ {main.temp_max}°C</div>
         <div>{weather[0].description}</div>
       </div>

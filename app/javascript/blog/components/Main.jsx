@@ -1,12 +1,14 @@
 import React from 'react';
 import Unit from './Unit';
+import City from './City';
 
 class Main extends React.Component{
   render(){
-    let { data } = this.props;
+    let { data, city } = this.props;
     return (
       <div>
         <h2>THis is Main</h2>
+        <City city={city}/>
         { data.map((dataUnit, i) => <Unit key={i} data={dataUnit} />) }
       </div>
     )
