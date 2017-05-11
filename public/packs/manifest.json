@@ -1,4 +1,11 @@
 {
   "application.js": "http://localhost:8080/packs/application.js",
-  "application.js.map": "http://localhost:8080/packs/application.js.map"
+  "application.js.map": "http://localhost:8080/packs/application.js.map",
+  "day.svg": "http://localhost:8080/packs/day.svg",
+  "cloudy-day-3.svg": "http://localhost:8080/packs/cloudy-day-3.svg",
+  "cloudy.svg": "http://localhost:8080/packs/cloudy.svg",
+  "rainy-4.svg": "http://localhost:8080/packs/rainy-4.svg",
+  "rainy-7.svg": "http://localhost:8080/packs/rainy-7.svg",
+  "snowy-6.svg": "http://localhost:8080/packs/snowy-6.svg",
+  "thunder.svg": "http://localhost:8080/packs/thunder.svg"
 }

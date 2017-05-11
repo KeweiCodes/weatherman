@@ -16,13 +16,14 @@ const packPaths = sync(join(paths.source, paths.entry, extensionGlob))
 
 module.exports = {
   entry: packPaths.reduce(
-    (map, entry) => {
-      const localMap = map
-      const namespace = relative(join(paths.source, paths.entry), dirname(entry))
-      localMap[join(namespace, basename(entry, extname(entry)))] = resolve(entry)
-      return localMap
-    }, {}
-  ),
+      (map, entry) => {
+        const localMap = map
+        const namespace = relative(join(paths.source, paths.entry), dirname(entry))
+        localMap[join(namespace, basename(entry, extname(entry)))] = ['whatwg-fetch', resolve(entry)]
+        return localMap
+      }, {}
+    )
+  ,
 
   output: {
     filename: '[name].js',
