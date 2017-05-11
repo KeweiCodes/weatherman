@@ -18,6 +18,7 @@
     "moment": "^2.18.1",
     "node-sass": "^4.5.2",
     "path-complete-extname": "^0.1.0",
+    "pleasejs": "^0.4.2",
     "postcss-loader": "^2.0.2",
     "postcss-smart-import": "^0.6.13",
     "precss": "^1.4.0",
