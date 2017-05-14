@@ -11,11 +11,27 @@ function data(state = [], action){
   }
 }
 
-function city(state = {}, action){
+function city(state = { data: {} }, action){
   let { type, city } = action;
   switch (type){
+    case 'ERROR_FETCH':
+      return {
+        isLoading: false,
+        error: true,
+        data: []
+      }
     case 'FINISH_FETCH':
-      return city;
+      return {
+        isLoading: false,
+        error: false,
+        data: city
+      };
+    case 'START_FETCH':
+      return {
+        isLoading: true,
+        error: false,
+        data: []
+      }
     default:
       return state;
   }

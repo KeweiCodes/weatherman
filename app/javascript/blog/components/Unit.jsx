@@ -1,4 +1,5 @@
 import React from 'react';
+import Radium from 'radium';
 import moment from 'moment';
 import icon_day from '../assets/day.svg';
 import icon_thunder from '../assets/thunder.svg';
@@ -7,6 +8,18 @@ import icon_rain from '../assets/rainy-7.svg';
 import icon_snow from '../assets/snowy-6.svg';
 import icon_cloudy from '../assets/cloudy.svg';
 import icon_cloudy_day from '../assets/cloudy-day-3';
+
+let style = {
+  WebkitTransition: 'all 0.4s',
+  transition: 'all 0.4s',
+  textAlign: 'center',
+  ':hover': {
+    backgroundColor: 'skyblue'
+  },
+  ':first-letter': {
+    'text-transformation': 'capitalize'
+  }
+}
 
 class Unit extends React.Component{
   render(){
@@ -31,7 +44,7 @@ class Unit extends React.Component{
       weather_icon = icon_cloudy_day;
     }
     return(
-      <div className="col-sm-2">
+      <div style={style} className="col-sm-2">
         <img src={weather_icon}/>
         <div>{moment.parseZone(dt_txt).format('MMM D HA')}</div>
         <div>{main.temp_min}°C ~ {main.temp_max}°C</div>
@@ -41,4 +54,4 @@ class Unit extends React.Component{
   }
 }
 
-export default Unit;
+export default Radium(Unit);

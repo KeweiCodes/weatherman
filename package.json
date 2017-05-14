@@ -23,6 +23,7 @@
     "postcss-smart-import": "^0.6.13",
     "precss": "^1.4.0",
     "prop-types": "^15.5.8",
+    "radium": "^0.18.2",
     "rails-erb-loader": "^5.0.0",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",

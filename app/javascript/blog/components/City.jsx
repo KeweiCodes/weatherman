@@ -12,12 +12,12 @@ let [c1, c2] = Please.make_scheme(
 );
 
 let cityStyle = {
-  color: c2,
   textAlign: 'center'
 }
 
 let rowStyle = {
   backgroundColor: c1,
+  color: c2,
   fontFamily: "'Fredoka One', cursive",
   textShadow: '1px 1px white',
   fontSize: '28px'
@@ -34,18 +34,41 @@ let inputStyle = {
 
 class City extends React.Component{
   render(){
-    let { city } = this.props;
+    let city = this.props.city.data;
     return (
       <div style={rowStyle} className="row rowStyle">
         <div className="col-md-2">
           Enter City:
         </div>
         <div className="col-md-7">
-          <input type='text' style={inputStyle} className="form-control"/>
+          <form onSubmit={this.handleSubmit.bind(this)}>
+            <input type='text' style={inputStyle} ref="city" className="form-control"/>
+          </form>
         </div>
         <div className="col-md-3" style={cityStyle}>{city.name}, {city.country}</div>
       </div>
     )
+  }
+
+  handleSubmit(e) {
+    e.preventDefault();
+    console.log(this.refs.city.value);
+    this.fetchData();
+  }
+
+  fetchData(cityName){
+    let { startFetch, finishFetch } = this.props;
+    let cityInput = this.refs.city;
+    startFetch();
+    fetch(`//api.openweathermap.org/data/2.5/forecast?APPID=aeeb99523882090ee49ca2f2560ae5c4&units=metric&q=${cityInput.value}`)
+      .then((response) => {
+        return response.json();
+      })
+      .then((response) => {
+        let { city, list } = response;
+        finishFetch(city, list);
+        cityInput.reset();
+      });
   }
 }
 
