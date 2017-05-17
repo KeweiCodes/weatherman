@@ -14,3 +14,10 @@ export function finishFetch(city, result){
     result
   }
 }
+
+export function finishFetchViews(views){
+  return {
+    type: 'FINISH_FETCH_VIEWS',
+    views
+  }
+}

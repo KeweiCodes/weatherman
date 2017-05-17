@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170515041025) do
+ActiveRecord::Schema.define(version: 20170517005132) do
 
   create_table "oauth_access_grants", force: :cascade do |t|
     t.integer "resource_owner_id", null: false
@@ -52,11 +52,6 @@ ActiveRecord::Schema.define(version: 20170515041025) do
     t.index ["uid"], name: "index_oauth_applications_on_uid", unique: true
   end
 
-  create_table "recently_views", force: :cascade do |t|
-    t.string "city"
-    t.integer "user_id"
-  end
-
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -72,6 +67,11 @@ ActiveRecord::Schema.define(version: 20170515041025) do
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
+
+  create_table "views", force: :cascade do |t|
+    t.string "city"
+    t.integer "user_id"
   end
 
 end

@@ -56,19 +56,35 @@ class City extends React.Component{
     this.fetchData();
   }
 
-  fetchData(cityName){
+  fetchData(){
     let { startFetch, finishFetch } = this.props;
     let cityInput = this.refs.city;
+    let cityName = cityInput.value;
+    if(!cityName){
+      return;
+    }
     startFetch();
-    fetch(`//api.openweathermap.org/data/2.5/forecast?APPID=aeeb99523882090ee49ca2f2560ae5c4&units=metric&q=${cityInput.value}`)
+    fetch(`//api.openweathermap.org/data/2.5/forecast?APPID=aeeb99523882090ee49ca2f2560ae5c4&units=metric&q=${cityName}`)
       .then((response) => {
         return response.json();
       })
       .then((response) => {
         let { city, list } = response;
         finishFetch(city, list);
-        cityInput.reset();
       });
+    fetch('//localhost:3000/api/views', {
+      method: 'POST',
+      body: JSON.stringify({
+        city: cityName
+      }),
+      headers: {
+        'Authorization': `Bearer ${window._token}`,
+        'Content-Type': 'application/json'
+      }
+    })
+      .then((reponse) => {
+        console.log(reponse);
+      })
   }
 }
 

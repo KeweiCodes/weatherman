@@ -18,7 +18,7 @@ function city(state = { data: {} }, action){
       return {
         isLoading: false,
         error: true,
-        data: []
+        data: {}
       }
     case 'FINISH_FETCH':
       return {
@@ -30,14 +30,24 @@ function city(state = { data: {} }, action){
       return {
         isLoading: true,
         error: false,
-        data: []
+        data: {}
       }
     default:
       return state;
   }
 }
 
+function views(state = [], action){
+  let { type, views } = action;
+
+  if(action.type === 'FINISH_FETCH_VIEWS'){
+    console.log(state);
+    return [...action.views];
+  }else{
+    return state;
+  }
+}
 
 export default combineReducers({
-  data, city, routing: routerReducer
+  data, city, views, routing: routerReducer
 });
