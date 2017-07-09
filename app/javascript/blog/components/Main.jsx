@@ -42,7 +42,7 @@ class Main extends React.Component{
   }
 
   fetchViews(){
-    fetch((process.env['REDIRECT_URI'] || '//localhost:3000') + '/api/views', {
+    fetch( location.origin + '/api/views', {
       headers: {
         'Authorization': `Bearer ${window._token}`
       }
